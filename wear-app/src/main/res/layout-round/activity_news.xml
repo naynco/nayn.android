@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/title_back"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/nayn_floating_action_button_yellow" />
+            <ImageView
+                android:id="@+id/image"
+                android:alpha="0.3"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/title_news"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="2dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="TITLE TITLEj hkgjashfgashdfgahsdf ajks hdfklajsd hflkaj sdhf "
+                android:textColor="@color/black" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="asdfasdfasdfmalnsdkbfjhagvdfbaknsdlfkajshgfdgcvhbjnmkmmkmkmkmkmm"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+
+</ScrollView>

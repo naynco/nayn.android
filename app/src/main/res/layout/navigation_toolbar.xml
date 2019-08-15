@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/toolbar_black_color"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    app:contentInsetStart="0dp"
+    app:elevation="4dp"
+    app:paddingEnd="0dp"
+    app:paddingStart="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/nayn_main_image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            app:srcCompat="@drawable/regular" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/toolbar_ivNavigation"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="23dp"
+            android:layout_toLeftOf="@id/toolbar_tvTitle"
+            android:background="@drawable/selector_view"
+            app:srcCompat="@drawable/category_down_arrow" />
+
+
+        <ImageView
+            android:visibility="invisible"
+            android:id="@+id/settings"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:tint="@color/finestWhite"
+            app:srcCompat="@drawable/ic_settings_black_24dp" />
+
+        <co.nayn.nayn.widgets.CustomFontTextView
+            android:id="@+id/toolbar_tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_toStartOf="@+id/settings"
+            android:padding="17dp"
+            android:text="Kategoriler"
+            android:textColor="@android:color/white"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:fontName="Montserrat-Bold.ttf" />
+
+    </RelativeLayout>
+
+
+</androidx.appcompat.widget.Toolbar>
+
+

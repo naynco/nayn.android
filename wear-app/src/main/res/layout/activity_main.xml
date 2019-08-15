@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/drawer_background_color"
+    android:padding="@dimen/box_inset_layout_padding"
+    tools:context="co.nayn.nayn.MainActivity"
+    tools:deviceIds="wear">
+
+    <FrameLayout
+        android:id="@+id/root"
+        android:padding="@dimen/inner_frame_layout_padding"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:boxedEdges="all">
+
+        <me.kaelaela.verticalviewpager.VerticalViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:overScrollMode="never"
+            android:clipToPadding="false"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:id="@+id/error_section"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center"
+                android:text="Lütfen internet bağlantınızı\nkontrol ediniz."
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/try_again"
+                android:text="Tekrar dene"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_marginLeft="5dp"
+                android:id="@+id/logo"
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                android:src="@drawable/regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:elevation="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:id="@+id/drawer"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:onClick="onClickDrawer"
+                android:src="@drawable/ic_subject_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/progress"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
+</androidx.wear.widget.BoxInsetLayout>

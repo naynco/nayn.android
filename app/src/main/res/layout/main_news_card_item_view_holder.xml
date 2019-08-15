@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<co.nayn.nayn.widgets.MainNewsView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:id="@+id/main_news_view"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp" />

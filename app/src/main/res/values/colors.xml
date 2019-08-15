@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#191919</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">@android:color/transparent</color>
+    <color name="drawer_background_color">#444444</color>
+    <color name="all_news_background_color">#1F1F1F</color>
+    <color name="world_news_first_color">#00C6FB</color>
+    <color name="world_news_second_color">#005BEA</color>
+    <color name="agenda_news_first_color">#F83600</color>
+    <color name="agenda_news_second_color">#F9D423</color>
+    <color name="art_news_first_color">#DDD6F3</color>
+    <color name="art_news_second_color">#FAACA8</color>
+    <color name="breaking_news_first_color">#FF0844</color>
+    <color name="breaking_news_second_color">#FFB199</color>
+    <color name="social_news_first_color">#4481EB</color>
+    <color name="social_news_second_color">#04BEFE</color>
+    <color name="sport_news_first_color">#43E97B</color>
+    <color name="sport_news_second_color">#38F9D7</color>
+    <color name="nayn_white_color">#FFFFFF</color>
+    <color name="nayn_black_color">#191919</color>
+    <color name="nayn_splash_black_color">#000000</color>
+    <color name="nayn_main_news_text">#FAFAFA</color>
+    <color name="nayn_card_item_hour_text">#6A6A6A</color>
+    <color name="toolbar_black_color">#000000</color>
+    <color name="toolbar_content_black_color">#a4000000</color>
+    <color name="nayn_detail_text_color">#333333</color>
+    <color name="nayn_detail_text_time_color">#787878</color>
+    <color name="nayn_floating_action_button_yellow">#FFD11D</color>
+    <color name="nayn_pod_background_color">#E871DA</color>
+    <color name="widget_title_color">#000000</color>
+    <color name="widget_image_tint_color">#b39400</color>
+
+</resources>

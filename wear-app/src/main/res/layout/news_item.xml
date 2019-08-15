@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/drawer_background_color"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="20dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/main_news_image"
+        android:alpha="0.3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
+    <RelativeLayout
+        android:layout_margin="5dp"
+        android:id="@+id/main_news_root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <co.nayn.nayn.widgets.NaynGradientButton
+            android:id="@+id/main_text_category_button"
+            android:layout_width="45sp"
+            android:layout_height="25dp"
+            android:layout_above="@+id/main_news_text"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/main_category_button_radius"
+            android:gravity="center|center"
+            android:text="SPOR"
+            android:textColor="@color/nayn_white_color"
+            android:textSize="12sp" />
+
+        <co.nayn.nayn.widgets.CustomFontTextView
+            android:layout_centerInParent="true"
+            android:id="@+id/main_news_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:text="Beşiktaş Başkanı Fikret Orman, Ibrahimovic’in Transferini Düşünüyor"
+            android:textColor="@color/nayn_main_news_text"
+            android:textSize="18dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            app:fontName="GT-Eesti-Display-Medium.ttf" />
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_below="@+id/main_news_text"
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/main_news_time_icon"
+                android:layout_width="15dp"
+                android:layout_height="24dp"
+                android:layout_gravity="bottom"
+                app:srcCompat="@drawable/ic_access_time_black_24dp" />
+
+            <co.nayn.nayn.widgets.CustomFontTextView
+                android:id="@+id/main_news_time_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:gravity="center"
+                android:text="25 Aralık 2017, Pazartesi 13:09"
+                android:textColor="@color/nayn_card_item_hour_text"
+                android:textSize="10dp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+</androidx.cardview.widget.CardView>

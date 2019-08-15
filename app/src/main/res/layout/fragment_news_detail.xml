@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ScrollView
+        android:id="@+id/news_detail_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/nayn_white_color">
+
+
+        <LinearLayout
+            android:id="@+id/news_detail_root_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/news_detail_image"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@color/nayn_black_color" />
+
+
+            <co.nayn.nayn.widgets.NaynGradientButton
+                android:id="@+id/news_category_detail_button"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/main_category_button_radius"
+                android:text="SPOR"
+                android:textColor="@color/nayn_white_color" />
+
+
+            <co.nayn.nayn.widgets.CustomFontTextView
+                android:id="@+id/news_detail_sum_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginRight="15dp"
+                android:text="Kılıçdaroğlu ile görüşen Karamollaoğlu: Ortak aday konusu hafta sonuna kadar netleşecek"
+                android:textColor="@color/nayn_detail_text_color"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:fontName="Montserrat-SemiBold.ttf" />
+
+            <co.nayn.nayn.widgets.CustomFontTextView
+                android:id="@+id/news_detail_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="7dp"
+                android:text="30 Mart 2018 - 09:33"
+                android:textColor="@color/nayn_detail_text_time_color"
+                android:textSize="12sp"
+                app:fontName="Montserrat-Regular.ttf" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="21dp"
+                android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/share_whatsapp_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/share_whatsapp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/share_facebook_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="11.4dp"
+                    android:background="@drawable/share_facebook" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/share_twitter_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="11.4dp"
+                    android:background="@drawable/share_twitter" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/share_messenger_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="11.4dp"
+                    android:background="@drawable/share_messenger" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical">
+
+
+                <WebView
+                    android:id="@+id/news_detail_webview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="50dp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/share_fab"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="right|bottom"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/nayn_floating_action_button_yellow"
+        app:srcCompat="@drawable/ic_share_black_24dp" />
+
+    <include layout="@layout/news_content_toolbar" />
+</FrameLayout>

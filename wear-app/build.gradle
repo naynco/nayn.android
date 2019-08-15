@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.noveogroup.android.check'
+apply from: '../gradle/versions.gradle'
+android {
+    publishNonDefault true
+    signingConfigs {
+        signingConfig {
+            keyAlias 'naynkeystore'
+            keyPassword 'naynkeystore'
+            storeFile file('../naynkeystore')
+            storePassword 'naynkeystore'
+        }
+    }
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "co.nayn.news"
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionName VERSION_NAME
+        versionCode VERSION_CODE.toInteger()+2
+        signingConfig signingConfigs.signingConfig
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.signingConfig
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(":core")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "com.google.android.support:wearable:2.4.0"
+    implementation "com.google.android.gms:play-services-wearable:16.0.1"
+    implementation 'androidx.percentlayout:percentlayout:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.wear:wear:1.0.0'
+    compileOnly "com.google.android.wearable:wearable:2.4.0"
+
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v13:1.0.0'
+    implementation "me.kaelaela:verticalviewpager:1.0.0@aar"
+    implementation ("com.squareup.picasso:picasso:2.71828"){
+        exclude group: "com.android.support"
+    }
+
+    implementation ("org.jetbrains.anko:anko:$rootProject.anko_version"){
+        exclude group: "com.android.support"
+    }
+    implementation "org.jetbrains.anko:anko-coroutines:$rootProject.anko_version"
+
+    // Retrofit dependencies
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+
+    // Stetho dependencies
+    implementation ("com.facebook.stetho:stetho:$stethoVersion"){
+        exclude group: 'com.google.code.findbugs'
+    }
+    implementation ("com.facebook.stetho:stetho-okhttp3:$stethoVersion"){
+        exclude group: 'com.google.code.findbugs'
+    }
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+
+}
+
+android.applicationVariants.all { variant ->
+    versions.applyWear(variant)
+}

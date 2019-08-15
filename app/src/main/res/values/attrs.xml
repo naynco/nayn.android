@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomFontTextView">
+        <attr name="fontName" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="NavigationCardView">
+        <attr name="firstColor" format="color" />
+        <attr name="secondColor" format="color"></attr>
+        <attr name="titleText" format="string"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="MainNewsView"></declare-styleable>
+
+
+    <declare-styleable name="NaynGradientButton"></declare-styleable>
+
+
+</resources >

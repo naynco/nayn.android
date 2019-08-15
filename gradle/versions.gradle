@@ -1,0 +1,63 @@
+project.ext.versions = new HashMap<String, Object>()
+
+project.ext.versions.apply = { variant ->
+    versions.applyVersionCode(variant)
+    versions.applyVersionName(variant)
+}
+
+project.ext.versions.applyWear = { variant ->
+    versions.applyWearVersionCode(variant)
+    versions.applyVersionName(variant)
+}
+
+// increments version code
+project.ext.versions.applyVersionCode = { variant ->
+    def buildType = variant.buildType.name
+    def versionCode = VERSION_CODE.toInteger()
+
+    //increment only for 'release' or 'beta' builds
+    if('release' == buildType || 'beta' == buildType) {
+        versionCode += 2
+        ant.propertyfile(file: "../gradle.properties") {
+            entry(key: "VERSION_CODE", value: versionCode)
+        }
+        variant.outputs.each { output ->
+            output.versionCodeOverride = versionCode
+        }
+    }
+
+}
+
+// increments version code
+project.ext.versions.applyWearVersionCode = { variant ->
+    def buildType = variant.buildType.name
+    def versionCode = VERSION_CODE.toInteger()
+
+    //increment only for 'release' or 'beta' builds
+    if('release' == buildType || 'beta' == buildType) {
+        versionCode += 3
+        ant.propertyfile(file: "../gradle.properties") {
+            entry(key: "WEAR_APP_VERSION_CODE", value: versionCode)
+        }
+        variant.outputs.each { output ->
+            output.versionCodeOverride = versionCode
+        }
+    }
+
+}
+
+// updates version name based on last git tag
+project.ext.versions.applyVersionName = { variant ->
+    def lastGitTag = 'git rev-parse --verify HEAD'.execute().text.trim().substring(35,40)
+
+    //update version name if we have a new tag
+    if (!VERSION_NAME.equals(lastGitTag)) {
+        ant.propertyfile(file: "../gradle.properties") {
+            entry(key: "VERSION_NAME", value: lastGitTag)
+        }
+        variant.outputs.each { output ->
+            output.versionNameOverride = lastGitTag
+        }
+    }
+
+}

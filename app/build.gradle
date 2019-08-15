@@ -1,0 +1,182 @@
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+apply plugin: 'com.noveogroup.android.check'
+apply from: '../gradle/versions.gradle'
+android {
+    signingConfigs {
+        signingConfig {
+            keyAlias 'naynkeystore'
+            keyPassword 'naynkeystore'
+            storeFile file('../naynkeystore')
+            storePassword 'naynkeystore'
+        }
+    }
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion '28.0.3'
+    defaultConfig {
+        applicationId 'co.nayn.news'
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionName VERSION_NAME
+        versionCode VERSION_CODE.toInteger()
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+        signingConfig signingConfigs.signingConfig
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.signingConfig
+        }
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+}
+
+configurations.all {
+    resolutionStrategy {
+        eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'com.android.support' && details.requested.name == 'animated-vector-drawable' ) {
+                details.useVersion "28.0.0"
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(":core")
+    // App's dependencies, including test
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0-alpha01'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "com.google.guava:guava:$rootProject.guavaVersion"
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
+
+    //Facebook dependencies
+    implementation "com.facebook.android:facebook-android-sdk:$facebookSdkVersion"
+
+    // Dagger dependencies
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    compileOnly 'org.glassfish:javax.annotation:10.0-b28'
+    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
+
+    // Android arch components
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    testImplementation 'androidx.arch.core:core-testing:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.0.0'
+
+    // FragNav dependencies
+    implementation "com.ncapdevi:frag-nav:$fragNavVersion"
+
+    // ButterKnife dependencies
+    implementation "com.jakewharton:butterknife:$butterknifeVersion"
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc2'
+
+    // Chuck dependencies
+    debugImplementation "com.readystatesoftware.chuck:library:$chuckVersion"
+    releaseImplementation "com.readystatesoftware.chuck:library-no-op:$chuckVersion"
+
+    // Retrofit dependencies
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+
+    // Stetho dependencies
+    implementation "com.facebook.stetho:stetho:$stethoVersion"
+    implementation "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+
+    //Paginate
+    implementation 'com.github.markomilos:paginate:0.5.1'
+
+    // Dependencies for local unit tests
+    testImplementation "junit:junit:$rootProject.ext.junitVersion"
+    testImplementation "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
+    testImplementation "org.hamcrest:hamcrest-all:$rootProject.ext.hamcrestVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+
+    // Dependecies for logging
+    implementation 'com.orhanobut:logger:2.1.1'
+
+    //Picasso
+    implementation ("com.squareup.picasso:picasso:2.71828"){
+        exclude group: 'com.android.support'
+    }
+
+    // Android Testing Support Library's runner and rules
+    androidTestImplementation 'androidx.test:runner:1.1.1-alpha01'
+    androidTestImplementation 'androidx.test:rules:1.1.1-alpha01'
+
+    // Dependencies for Android unit tests
+    androidTestImplementation "junit:junit:$rootProject.ext.junitVersion"
+    androidTestImplementation "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
+    androidTestImplementation "com.google.dexmaker:dexmaker:$rootProject.ext.dexmakerVersion"
+    androidTestImplementation "com.google.dexmaker:dexmaker-mockito:$rootProject.ext.dexmakerVersion"
+
+    // Espresso UI Testing
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1-alpha01'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.1.1-alpha01'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.1.1-alpha01'
+    androidTestImplementation 'androidx.test.espresso.idling:idling-concurrent:3.1.1-alpha01'
+    implementation 'androidx.test.espresso:espresso-idling-resource:3.1.1-alpha01'
+
+    // Resolve conflicts between main and test APK:
+    androidTestImplementation 'androidx.annotation:annotation:1.0.0'
+    androidTestImplementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    androidTestImplementation 'androidx.recyclerview:recyclerview:1.0.0'
+    androidTestImplementation 'androidx.appcompat:appcompat:1.0.2'
+    androidTestImplementation 'com.google.android.material:material:1.1.0-alpha01'
+    androidTestImplementation 'com.google.code.findbugs:jsr305:3.0.1'
+
+    //RxAndroid
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
+
+    //Finest WebView
+    implementation "com.thefinestartist:finestwebview:$rootProject.finestWebViewVersion"
+
+    //Fabric
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
+        transitive = true
+    }
+
+    //Facebook Sdk
+    implementation "com.facebook.android:facebook-android-sdk:$rootProject.facebookSdkVersion"
+
+    //MaterialDialog
+    implementation "com.afollestad.material-dialogs:core:$materialDialogVersion"
+
+    implementation 'com.google.firebase:firebase-core:16.0.4'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+
+    androidTestImplementation('tools.fastlane:screengrab:1.2.0')
+    androidTestImplementation 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0'
+
+    implementation "androidx.room:room-runtime:$rootProject.room_version"
+    annotationProcessor "androidx.room:room-compiler:$rootProject.room_version"
+    implementation "androidx.room:room-guava:$rootProject.room_version"
+    testImplementation "androidx.room:room-testing:$rootProject.room_version"
+
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+    implementation 'io.paperdb:paperdb:2.6'
+
+}
+
+apply plugin: 'com.google.gms.google-services'
+
+android.applicationVariants.all { variant ->
+    versions.apply(variant)
+}

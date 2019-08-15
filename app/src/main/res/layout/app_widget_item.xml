@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:id="@+id/widget_cardview"
+        android:layout_height="200dp">
+
+        <FrameLayout
+            android:id="@+id/widget_frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/widget_news_image"
+                android:background="@color/drawer_background_color"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <co.nayn.nayn.widgets.CustomFontTextView
+                android:id="@+id/widget_news_text"
+                android:textSize="20dp"
+                app:fontName="GT-Eesti-Display-Medium.ttf"
+                android:textColor="@color/nayn_white_color"
+                android:text="asdasd"
+                android:layout_gravity="center|left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="RtlHardcoded" />
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+

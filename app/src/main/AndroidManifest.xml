@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="co.nayn.nayn">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="co.nayn.nayn.MainApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/nayn_black"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/nayn_black"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity android:name=".ui.main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="nayn.co"
+                    android:pathPrefix="/app"
+                    android:scheme="http://" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.thefinestartist.finestwebview.FinestWebViewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="sensor"
+            android:theme="@style/FinestWebViewTheme" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="cdc27f15b6f4a4d38fce1f552375540f2aad4849" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider{325036771299470}"
+            android:exported="true" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <service android:name="co.nayn.nayn.notification.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name=".appwidget.NaynAppWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/nayn_app_widget_provider_info" />
+        </receiver>
+
+        <service
+            android:name=".appwidget.NaynWidgetService"
+            android:exported="true"
+            android:enabled="true"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+        <service android:name=".appwidget.FetchDataService"/>
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:label="@string/title_activity_settings"/>
+
+    </application>
+
+</manifest>

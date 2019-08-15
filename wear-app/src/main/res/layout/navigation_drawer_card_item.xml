@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+
+    <LinearLayout
+        android:id="@+id/nav_drawer_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <co.nayn.nayn.widgets.CustomFontTextView
+            android:id="@+id/nav_card_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:text="Tümü"
+            android:gravity="center"
+            android:textColor="@color/nayn_white_color"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:fontName="Montserrat-Medium.ttf" />
+
+        <Button
+            android:id="@+id/icon_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_check_black_24dp"
+            android:orientation="horizontal"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
+

@@ -1,0 +1,70 @@
+image: unitedclassifiedsapps/gitlab-ci-android-fastlane
+
+before_script:
+  - ./accept_licenses.sh
+  - echo y | $ANDROID_HOME/tools/bin/sdkmanager 'tools'
+  - echo y | $ANDROID_HOME/tools/bin/sdkmanager 'platform-tools'
+  - echo y | $ANDROID_HOME/tools/bin/sdkmanager 'build-tools;'$ANDROID_BUILD_TOOLS
+  - echo y | $ANDROID_HOME/tools/bin/sdkmanager 'platforms;android-'$ANDROID_COMPILE_SDK
+  - echo y | $ANDROID_HOME/tools/bin/sdkmanager 'extras;android;m2repository'
+  - echo y | $ANDROID_HOME/tools/bin/sdkmanager 'extras;google;google_play_services'
+  - echo y | $ANDROID_HOME/tools/bin/sdkmanager 'extras;google;m2repository'
+  - bundle install
+
+cache:
+  key: ${CI_PROJECT_ID}
+  paths:
+  - .gradle/
+
+stages:
+- build
+- test
+- quality_assurance
+- deploy_beta
+- deploy
+
+build_job:
+  stage: build
+  script:
+    - fastlane dev
+  artifacts:
+    paths:
+    - app/build/outputs/
+
+unit_tests:
+  stage: test
+  script:
+    - fastlane test
+  artifacts:
+    name: "reports_${CI_PROJECT_NAME}_${CI_BUILD_REF_NAME}"
+    when: on_failure
+    expire_in: 4 days
+    paths:
+      - app/build/reports/tests/
+
+
+static_analysis:
+  stage: quality_assurance
+  script:
+    - ./gradlew check
+  artifacts:
+    name: "reports_${CI_PROJECT_NAME}_${CI_BUILD_REF_NAME}"
+    when: on_failure
+    expire_in: 4 days
+    paths:
+      - app/build/reports/
+
+deploy_internal:
+  only:
+    - master
+  stage: deploy
+  script:
+    - fastlane android deploy
+
+deploy_external:
+  only:
+    - beta
+  stage: deploy_beta
+  script:
+    - bundle exec fastlane android beta
+  when: manual
